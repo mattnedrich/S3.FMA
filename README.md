@@ -40,7 +40,7 @@ s3FileManager.downloadFileFromBucket('mybucket', 'fileToDownload.txt', '~/Downlo
 s3FileManager.downloadAllFilesFromBucket('mybucket', '~/Downloads/download_to_here/')
 ```
 
-### **Download all files from a bucket who's filename satisfy a predicate**
+### **Download all files from a bucket whose filename satisfy a predicate**
 ```python
 # download files that contain the word 'foo' in their name from 'mybucket' to '~/Downloads/download_to_here/'
 s3FileManager.downloadFilesInBucketWithPredicate('mybucket', lambda filename: 'foo' in filename, '~/Downloads/download_to_here/')
@@ -52,7 +52,7 @@ s3FileManager.downloadFilesInBucketWithPredicate('mybucket', lambda filename: 'f
 s3FileManager.deleteAllFilesFromBucket('mybucket')
 ```
 
-### **Delete all files from a bucket who's filename satisfy a predicate**
+### **Delete all files from a bucket whose filename satisfy a predicate**
 ```python
 # delete files that contain the word 'foo' in their name from 'mybucket'
 s3FileManager.deleteFilesInBucketWithPredicate('mybucket', lambda filename: 'foo' in filename)
