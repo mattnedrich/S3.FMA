@@ -16,7 +16,7 @@ s3FileManager = S3FileManager(AWS_KEY, AWS_SECRET, use_ssl = True)
 
 **List all files in an S3 bucket**
 ```python
-# returns a list of files stored in bucket 'bucket_name'
+# returns a list of files stored in bucket 'mybucket'
 fileNames = s3FileManager.getFileNamesInBucket('mybucket')
     for f in filenames:
         print f
@@ -25,5 +25,29 @@ fileNames = s3FileManager.getFileNamesInBucket('mybucket')
 **Download a file from a bucket**
 ```python
 # download a file named 'fileToDownload.txt' from bucket 'mybucket' to '~/Downloads/download_to_here/'
-s3fileManager.downloadFileFromBucket('mybucket', 'fileToDownload.txt', '~/Downloads/download_to_here/')
+s3FileManager.downloadFileFromBucket('mybucket', 'fileToDownload.txt', '~/Downloads/download_to_here/')
+```
+
+**Download all files from a bucket**
+```python
+# download all of the files in bucket 'mybucket' to the '~/Downloads/download_to_here/'
+s3FileManager.downloadAllFilesFromBucket('mybucket', '~/Downloads/download_to_here/')
+```
+
+**Download all files from a bucket who's filename satisfy a predicate**
+```python
+# download files that contain the word 'foo' in their name from 'mybucket' to '~/Downloads/download_to_here/'
+s3FileManager.downloadFilesInBucketWithPredicate('mybucket', lambda filename: 'foo' in filename, '~/Downloads/download_to_here/')
+```
+
+**Delete all files from a bucket**
+```python
+# delete all files in bucket 'mybucket'
+s3FileManager.deleteAllFilesFromBucket('mybucket')
+```
+
+**Delete all files from a bucket who's filename satisfy a predicate**
+```python
+# delete files that contain the word 'foo' in their name from 'mybucket'
+s3FileManager.deleteFilesInBucketWithPredicate('mybucket', lambda filename: 'foo' in filename)
 ```
